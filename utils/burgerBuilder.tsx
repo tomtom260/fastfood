@@ -59,6 +59,21 @@ export type Burger = {
   price: number
 }
 
+export type FoodCardProps = {
+  image: StaticImageData
+  bigImage?: StaticImageData
+  name: string
+  majorIngredients: {
+    patty: PattyType
+    bun: BunType
+  }
+  otherIngredients: OtherIngredientsType[]
+  optionalIngredients: OtherIngredientsType[]
+  description?: string
+  calories?: number
+}
+
+
 export class BurgerBuilder {
   burger: Burger = {
     name: "",

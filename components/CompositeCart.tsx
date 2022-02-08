@@ -7,7 +7,12 @@ import {
   XIcon,
 } from "@heroicons/react/outline"
 import { useAppDispatch, useAppSelector } from "../store"
-import { decreaseQuantity, increaseQuantity, removeItem } from "../store/cart"
+import {
+  decreaseQuantity,
+  increaseQuantity,
+  removeItem,
+  resetCart,
+} from "../store/cart"
 import { CartItems } from "../models/CartItems"
 import DecoratedCommandButton from "./DecoratedButton"
 
@@ -139,7 +144,10 @@ export default function Cart() {
             </div>
             <DecoratedCommandButton
               containerStyle="mt-6"
-              onClick={() => alert("Order Submitted")}
+              onClick={() => {
+                dispatch(resetCart())
+                alert("Order Submitted")
+              }}
             >
               Order
             </DecoratedCommandButton>

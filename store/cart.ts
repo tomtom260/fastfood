@@ -14,22 +14,21 @@ export type CartItemType = {
 
 export type AddToCartDto = Omit<CartItemType, "id">
 
-
-
 type CartSliceType = {
   items: CartItemType[]
 }
 
 const initialState: CartSliceType = {
-  items: []
+  items: [],
 }
-
-
 
 const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
+    resetCart(state) {
+      state.items = []
+    },
     removeItem(state, action: PayloadAction<string>) {
       state.items = state.items.filter(item => item.id !== action.payload)
     },
@@ -53,5 +52,10 @@ const cartSlice = createSlice({
 
 export default cartSlice.reducer
 
-export const { removeItem, addItem, increaseQuantity, decreaseQuantity } =
-  cartSlice.actions
+export const {
+  removeItem,
+  addItem,
+  increaseQuantity,
+  decreaseQuantity,
+  resetCart,
+} = cartSlice.actions
